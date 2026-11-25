@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Huggy Modern UI",
+  "version": "0.1.0",
+  "description": "Deixa a interface da Huggy mais moderna e agradável de usar, com modo claro e escuro.",
+  "content_scripts": [
+    {
+      "matches": ["https://www.huggy.app/*", "https://*.huggy.app/*", "https://*.huggy.io/*"],
+      "css": ["content.css"],
+      "js": ["theme.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.huggy.app/*", "https://*.huggy.app/*", "https://*.huggy.io/*"],
+      "js": ["contacts.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

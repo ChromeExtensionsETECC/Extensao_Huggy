@@ -1,0 +1,83 @@
+HUGGY MODERN UI - VERSAO 0.1.0
+Manual resumido de instalacao e uso
+=====================================================================
+
+O QUE E
+Extensao para o Google Chrome (e navegadores baseados em Chromium, como
+Edge e Brave) que deixa o visual da Huggy mais moderno, com modo claro e
+modo escuro. Ela so atua nas paginas da Huggy (huggy.app).
+
+ARQUIVO DESTA VERSAO
+Huggy-Modern-UI-v0.1.0.zip
+
+---------------------------------------------------------------------
+INSTALACAO (leva cerca de 2 minutos)
+---------------------------------------------------------------------
+1. Extraia o arquivo .zip:
+   - Clique com o botao direito no .zip > "Extrair tudo..." > Extrair.
+   - Escolha um lugar FIXO (ex.: C:\Extensoes\Huggy-Modern-UI).
+     NAO apague nem mova essa pasta depois: o Chrome le a extensao
+     diretamente dela.
+
+2. Abra o Chrome e digite na barra de enderecos:
+       chrome://extensions
+   e tecle Enter.
+
+3. No canto superior direito, ligue a chave "Modo do desenvolvedor".
+
+4. Clique no botao "Carregar sem compactacao".
+
+5. Selecione a pasta que voce extraiu (a que contem o arquivo
+   manifest.json) e clique em "Selecionar pasta".
+
+6. A extensao "Huggy Modern UI" aparece na lista, ativada.
+
+7. Abra https://www.huggy.app (ou atualize a pagina com F5).
+   O novo visual ja deve aparecer.
+
+---------------------------------------------------------------------
+COMO USAR
+---------------------------------------------------------------------
+- MODO ESCURO: no menu lateral esquerdo, logo acima do icone de ajuda,
+  ha um interruptor com sol e lua. Clique para alternar entre claro e
+  escuro. A escolha fica salva no navegador.
+
+- CONTATOS (aba "Pessoas"):
+  * Botoes ao lado de "Adicionar contato" alternam a visualizacao entre
+    TABELA e CARDS.
+  * "Ocultar sem nome" esconde contatos sem nome (vem DESLIGADO).
+  * As colunas Organizacoes e Grupos ficam ocultas.
+
+---------------------------------------------------------------------
+ATUALIZAR PARA UMA VERSAO NOVA
+---------------------------------------------------------------------
+1. Baixe o .zip da versao nova e extraia (pode sobrescrever a pasta
+   antiga, com o Chrome fechado, ou usar uma pasta nova).
+2. Em chrome://extensions, clique no icone de recarregar (seta circular)
+   no cartao da extensao. Se usou pasta nova, remova a antiga e carregue
+   a nova (passos 4 e 5 acima).
+3. Atualize a pagina da Huggy (F5).
+
+---------------------------------------------------------------------
+REMOVER
+---------------------------------------------------------------------
+Em chrome://extensions, clique em "Remover" no cartao da extensao.
+
+---------------------------------------------------------------------
+PROBLEMAS COMUNS
+---------------------------------------------------------------------
+- Nada mudou na Huggy: atualize a pagina (F5). Confira em
+  chrome://extensions se "Huggy Modern UI" esta ATIVADA.
+- Erro "Arquivo de manifesto ausente ou ilegivel": voce selecionou a
+  pasta errada. Escolha a pasta que contem o manifest.json diretamente.
+- A extensao sumiu depois de mover a pasta: carregue-a novamente
+  (passos 4 e 5).
+- Algo ficou estranho depois de uma atualizacao da Huggy: a extensao
+  depende de nomes internos da pagina. Avise quem mantem a extensao
+  para ajustar.
+
+PRIVACIDADE
+A extensao nao coleta nem envia dados. Ela so altera o visual e guarda,
+no proprio navegador, suas preferencias (tema, visualizacao de contatos).
+A unica requisicao extra e o carregamento da fonte "Plus Jakarta Sans"
+do Google Fonts.

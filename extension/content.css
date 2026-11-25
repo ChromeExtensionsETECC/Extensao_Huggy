@@ -1,0 +1,1187 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* =====================================================================
+   TEMA — todas as cores da extensão vêm destes tokens.
+   Regra do projeto: toda alteração visual deve funcionar nos DOIS temas.
+   Claro = padrão (:root).  Escuro = html[data-hg-theme="dark"] (theme.js).
+   ===================================================================== */
+:root {
+  --hg-primary: #d6249f;
+  --hg-violet: #6d4aff;
+  --hg-primary-ink: #d6249f;   /* cor de texto/ícone de destaque */
+  --hg-violet-ink: #6d4aff;
+
+  --hg-ink: #1b1534;
+  --hg-muted: #6b6785;
+  --hg-muted-2: #9a97b0;
+  --hg-line: rgba(109, 74, 255, .12);
+  --hg-line-strong: rgba(109, 74, 255, .28);
+
+  --hg-bg: #f6f4fd;            /* fundo das páginas */
+  --hg-bg-2: #f1eefb;          /* fundo da área de mensagens */
+  --hg-surface: #fff;
+  --hg-surface-soft: #faf8ff;
+  --hg-surface-alpha: rgba(255, 255, 255, .88);
+  --hg-surface-alpha-2: rgba(255, 255, 255, .92);
+  --hg-glass: rgba(255, 255, 255, .55);
+  --hg-topbar: rgba(255, 255, 255, .72);
+  --hg-hl: rgba(255, 255, 255, .9);            /* brilho interno no topo dos cards */
+  --hg-card-border: rgba(255, 255, 255, .9);
+  --hg-shadow: rgba(80, 50, 180, .2);
+  --hg-shadow-ink: rgba(27, 21, 52, .05);
+
+  --hg-dot: rgba(109, 74, 255, .36);
+  --hg-dot-soft: rgba(109, 74, 255, .22);
+  --hg-grid: rgba(109, 74, 255, .08);
+  --hg-glow-a: rgba(214, 36, 159, .09);
+  --hg-glow-b: rgba(109, 74, 255, .12);
+
+  --hg-pill: rgba(109, 74, 255, .08);
+  --hg-icon-a: rgba(214, 36, 159, .13);
+  --hg-icon-b: rgba(109, 74, 255, .2);
+  --hg-track: #d9d6e6;
+  --hg-disabled-bg: #f3f2f7;
+  --hg-disabled-fg: #b4b1c6;
+
+  --hg-aside-a: #1d1838;
+  --hg-aside-b: #13102a;
+  --hg-bubble-in: #fff;
+  --hg-box-bg: linear-gradient(rgb(218, 214, 249), rgb(248, 247, 253));   /* cards Spotlight/Help: degradê original da Huggy */
+  --hg-search-bg: #f1ecff;     /* bloco de busca dos chats: um tom acima do painel para se destacar */
+  --hg-search-field: #fff;
+  --hg-list-bg: #f3f0fc;       /* fundo da lista de chats: um tom abaixo dos itens */
+  --hg-item-bg: #fff;          /* itens (cards) da lista: mais claros que o fundo */
+  --hg-item-hover: #faf8ff;
+  --hg-out-a: #3f31bd;         /* balão do operador: violeta fechado, contraste do texto branco > 9 */
+  --hg-out-b: #5b36cc;         /* > 7 no ponto mais claro do degradê */
+  --hg-out-glow: rgba(63, 49, 189, .55);
+  --hg-scrim: rgba(27, 21, 52, .34);          /* película atrás dos modais */
+  --hg-acrylic: rgba(255, 255, 255, .68);     /* vidro acrílico dos modais */
+  --hg-acrylic-hl: rgba(255, 255, 255, .55);
+  --hg-acrylic-border: rgba(255, 255, 255, .8);
+  --hg-acrylic-foot: rgba(243, 240, 252, .55);
+  --hg-required: #d6362b;
+  --hg-item-active: #e9e4ff;   /* item selecionado em listas (ex.: histórico de contato) */
+}
+
+html[data-hg-theme="dark"]:root {
+  color-scheme: dark;
+
+  --hg-primary-ink: #ff5fc4;
+  --hg-violet-ink: #a992ff;
+
+  --hg-ink: #f1eeff;
+  --hg-muted: #a9a3c7;
+  --hg-muted-2: #7d779e;
+  --hg-line: rgba(170, 150, 255, .16);
+  --hg-line-strong: rgba(170, 150, 255, .38);
+
+  --hg-bg: #0f0c1d;
+  --hg-bg-2: #130f26;
+  --hg-surface: #1b1730;
+  --hg-surface-soft: #221d3b;
+  --hg-surface-alpha: rgba(27, 23, 48, .88);
+  --hg-surface-alpha-2: rgba(27, 23, 48, .92);
+  --hg-glass: rgba(27, 23, 48, .55);
+  --hg-topbar: rgba(15, 12, 29, .72);
+  --hg-hl: rgba(255, 255, 255, .06);
+  --hg-card-border: rgba(255, 255, 255, .07);
+  --hg-shadow: rgba(0, 0, 0, .55);
+  --hg-shadow-ink: rgba(0, 0, 0, .35);
+
+  --hg-dot: rgba(170, 150, 255, .28);
+  --hg-dot-soft: rgba(170, 150, 255, .2);
+  --hg-grid: rgba(170, 150, 255, .07);
+  --hg-glow-a: rgba(214, 36, 159, .14);
+  --hg-glow-b: rgba(109, 74, 255, .2);
+
+  --hg-pill: rgba(170, 150, 255, .14);
+  --hg-icon-a: rgba(255, 95, 196, .16);
+  --hg-icon-b: rgba(169, 146, 255, .22);
+  --hg-track: #3a3560;
+  --hg-disabled-bg: #231f3a;
+  --hg-disabled-fg: #5b5680;
+
+  --hg-chip-on: rgba(130, 105, 255, .45);   /* item selecionado: mais forte que os chips normais */
+  --hg-chip-on-ink: #fff;
+  --hg-aside-a: #0b0919;
+  --hg-aside-b: #070611;
+  --hg-bubble-in: #241f3d;
+  --hg-box-bg: linear-gradient(180deg, rgba(109, 74, 255, .3), rgba(109, 74, 255, .08)), #1b1730;
+  --hg-search-bg: #2a2447;     /* mais claro que o painel (#1b1730) */
+  --hg-search-field: #1b1730;
+  --hg-list-bg: #120e24;       /* fundo da lista mais escuro... */
+  --hg-item-bg: #261f42;       /* ...e itens mais claros, para se destacarem */
+  --hg-item-hover: #31295a;
+  --hg-out-a: #33288f;         /* um pouco mais fundo no escuro, para não ofuscar */
+  --hg-out-b: #4a2fa8;
+  --hg-out-glow: rgba(0, 0, 0, .55);
+  --hg-scrim: rgba(6, 4, 16, .58);
+  --hg-acrylic: rgba(30, 25, 54, .64);
+  --hg-acrylic-hl: rgba(255, 255, 255, .08);
+  --hg-acrylic-border: rgba(255, 255, 255, .13);
+  --hg-acrylic-foot: rgba(255, 255, 255, .04);
+  --hg-required: #ff7a6e;
+  --hg-item-active: rgba(130, 105, 255, .3);
+
+  /* Design system da Huggy: inverte a escala de neutros (tingida de violeta) e o branco.
+     Assim botões, campos, tags, tabelas etc. escurecem sem reescrever cada um. */
+  --white: #1b1730;
+  --neutral-0: #0f0c1d;   --neutral-10: #120f22;  --neutral-20: #16122a;  --neutral-30: #1b1730;
+  --neutral-40: #221d3b;  --neutral-50: #2b2548;  --neutral-60: #363058;  --neutral-70: #463f6e;
+  --neutral-80: #5a5384;  --neutral-90: #6f6899;  --neutral-100: #8680ae; --neutral-110: #9a94c0;
+  --neutral-120: #aca6cd; --neutral-130: #bbb6d7; --neutral-140: #c9c5e0; --neutral-150: #d6d3e8;
+  --neutral-160: #e0def0; --neutral-170: #e9e7f5; --neutral-180: #efeef8; --neutral-190: #f4f3fb;
+  --neutral-200: #f8f8fd; --neutral-210: #fcfbff;
+
+  /* Texto/ícone sobre cor sólida (botões, tags, avatar, checkbox) usa --white no design system;
+     como --white virou escuro, estes tokens voltam a ser branco de verdade. */
+  --btn-text-accent-primary-default: #fff; --btn-text-accent-primary-hover: #fff; --btn-text-accent-primary-focus: #fff; --btn-text-accent-primary-active: #fff; --btn-text-accent-primary-selected: #fff;
+  --btn-text-danger-primary-default: #fff; --btn-text-danger-primary-hover: #fff; --btn-text-danger-primary-focus: #fff; --btn-text-danger-primary-active: #fff; --btn-text-danger-primary-selected: #fff;
+  --btn-text-success-primary-default: #fff; --btn-text-success-primary-hover: #fff; --btn-text-success-primary-focus: #fff; --btn-text-success-primary-active: #fff;
+  --btn-text-discovery-primary-default: #fff; --btn-text-discovery-primary-hover: #fff; --btn-text-discovery-primary-focus: #fff; --btn-text-discovery-primary-active: #fff; --btn-text-discovery-primary-selected: #fff;
+  --btn-text-accent-secondary-contrast: #fff; --btn-text-accent-tertiary-contrast: #fff;
+  --btn-text-danger-secondary-contrast: #fff; --btn-text-danger-tertiary-contrast: #fff;
+  --btn-text-success-secondary-contrast: #fff; --btn-text-success-tertiary-contrast: #fff;
+  --btn-text-discovery-secondary-contrast: #fff; --btn-text-discovery-tertiary-contrast: #fff;
+  --tag-color-bold-text-on-color: #fff; --avatar-text-color: #fff; --checkbox-color-icon-default: #fff;
+
+  --red-70: #ff7a6e;   /* texto vermelho (ex.: "Indisponível") legível sobre fundo escuro */
+
+  /* Escalas de cor: 0–30 são os tons escuros e 100–130 os claros (tags, alertas, chips).
+     No escuro trocam-se os extremos; os tons médios (40–90, saturados) ficam como estão. */
+  --violet-0: #f3f2ff; --violet-130: #090336; --violet-10: #dfdcfe; --violet-120: #0e0452; --violet-20: #ccc7fd; --violet-110: #140670; --violet-30: #a59cfb; --violet-100: #19088e;
+  --purple-0: #fcf2ff; --purple-130: #0e0333; --purple-10: #f3dafb; --purple-120: #160347; --purple-20: #eac2f7; --purple-110: #20045a; --purple-30: #d794ee; --purple-100: #2d066e;
+  --red-0: #fff2f2; --red-130: #330102; --red-10: #fcdcdb; --red-120: #470202; --red-20: #f9c7c5; --red-110: #5c0503; --red-30: #f19b98; --red-100: #700905;
+  --orange-0: #fff7f2; --orange-130: #330d01; --orange-10: #fae5d9; --orange-120: #461101; --orange-20: #f6d4c0; --orange-110: #581602; --orange-30: #ecb190; --orange-100: #6b1c02;
+  --yellow-0: #fffaf2; --yellow-130: #332005; --yellow-10: #fff1d3; --yellow-120: #523505; --yellow-20: #ffeab4; --yellow-110: #724b03; --yellow-30: #ffdf7e; --yellow-100: #936300;
+  --green-0: #f2fffa; --green-130: #00331f; --green-10: #d8faec; --green-120: #004528; --green-20: #bef5de; --green-110: #005630; --green-30: #8eecc4; --green-100: #006836;
+  --cian-0: #f2fffc; --cian-130: #002533; --cian-10: #dcfdf6; --cian-120: #013348; --cian-20: #c6fbf1; --cian-110: #01425e; --cian-30: #97f4e9; --cian-100: #035273;
+}
+
+/* texto e fundo padrão: o contêiner raiz da Huggy fixa #1a2024 e todo o texto herda dele */
+html[data-hg-theme="dark"] body,
+html[data-hg-theme="dark"] [class*="_layout_vu225"] { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] body,
+html[data-hg-theme="dark"] [class*="_layout_vu225"],
+html[data-hg-theme="dark"] [class*="_bgSecondary_"] { background-color: var(--hg-bg) !important; }
+
+/* abas da barra de título: a Huggy usa cinzas e lilases fixos (sem tokens), por isso o ajuste no escuro */
+html[data-hg-theme="dark"] [class*="_title_ydhzx"] { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] [class*="_topbar_ydhzx"] a { color: var(--hg-muted) !important; }
+html[data-hg-theme="dark"] [class*="_topbar_ydhzx"] a:not([aria-current="page"]) { background-color: transparent !important; }
+html[data-hg-theme="dark"] [class*="_topbar_ydhzx"] a[aria-current="page"] {
+  background-color: var(--hg-chip-on) !important;
+  color: var(--hg-chip-on-ink) !important;
+}
+
+/* chips/botões "selecionados" com lilás fixo.
+   Classes de build da Huggy (podem mudar num deploy deles): riok2U = botão do trilho, ouAkwW = estado ativo, FAW4Np = chip, _8upc4N = chip selecionado */
+html[data-hg-theme="dark"] [class~="riok2U"][class~="ouAkwW"],
+html[data-hg-theme="dark"] [class~="FAW4Np"][class~="_8upc4N"] { background-color: var(--hg-chip-on) !important; }
+html[data-hg-theme="dark"] [class~="FAW4Np"][class~="_8upc4N"],
+html[data-hg-theme="dark"] [class~="FAW4Np"][class~="_8upc4N"] *,
+html[data-hg-theme="dark"] [class~="riok2U"][class~="ouAkwW"] i { color: var(--hg-chip-on-ink) !important; }
+
+/* itens do menu de ajuda (popover): o destaque no hover é um lilás quase branco fixo.
+   Classe de build da Huggy (pode mudar num deploy deles): vRkYy3 = item do menu */
+html[data-hg-theme="dark"] [class*="vRkYy3"]:hover { background-color: var(--hg-chip-on) !important; }
+html[data-hg-theme="dark"] [class*="vRkYy3"]:hover,
+html[data-hg-theme="dark"] [class*="vRkYy3"]:hover * { color: var(--hg-chip-on-ink) !important; }
+
+/* contador (badge) sobre fundo azul: o texto usava --white, que no escuro vira escuro */
+html[data-hg-theme="dark"] [class*="-ko1QYa"] { color: #fff !important; }
+/* etiqueta (tag) violeta com texto escuro fixo */
+html[data-hg-theme="dark"] [class*="-IzvpEO"] { color: var(--hg-violet-ink) !important; }
+
+/* barra de título de todas as telas (vidro) */
+[class*="_topbar_ydhzx"] {
+  background: var(--hg-topbar) !important;
+  border-bottom: 1px solid var(--hg-line) !important;
+}
+
+/* ATENÇÃO: não usar backdrop-filter, filter, transform ou perspective em contêineres que hospedam
+   popovers/dropdowns da Huggy (ex.: painel central do chat, barra de título). A Huggy posiciona esses
+   popovers com position:fixed, e qualquer um desses efeitos faz o contêiner virar a referência de posição,
+   deslocando o popover para fora da tela (foi o que quebrou o dropdown "Iniciada"). */
+
+/* ===== Fonte ===== */
+body,
+body *:not(i):not(.Icon):not([class*="locke"]):not([class*="pz_icon"]) {
+  font-family: 'Plus Jakarta Sans', Roboto, sans-serif !important;
+}
+
+/* ===== Switch de tema (menu lateral) — theme.js ===== */
+.hg-theme-switch {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 22px;
+  margin: 8px auto;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 99px;
+  background: rgba(255, 255, 255, .08);
+  cursor: pointer;
+  transition: background .25s, border-color .25s;
+}
+.hg-theme-switch:hover { border-color: rgba(255, 255, 255, .3); }
+.hg-ts-ico {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  color: rgba(255, 255, 255, .75);
+  pointer-events: none;
+}
+.hg-ts-ico svg { width: 100%; height: 100%; }
+.hg-ts-sun { left: 5px; }
+.hg-ts-moon { right: 5px; }
+.hg-ts-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+  transition: transform .25s cubic-bezier(.2, .8, .2, 1), background .25s;
+  pointer-events: none;
+}
+.hg-theme-switch[aria-checked="true"] { background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)); border-color: transparent; }
+.hg-theme-switch[aria-checked="true"] .hg-ts-thumb { transform: translateX(18px); }
+.hg-theme-switch[aria-checked="false"] .hg-ts-sun { color: #b8890b; }
+.hg-theme-switch[aria-checked="false"] .hg-ts-moon { opacity: .6; }
+.hg-theme-switch[aria-checked="true"] .hg-ts-moon { color: #fff; }
+.hg-theme-switch[aria-checked="true"] .hg-ts-sun { opacity: .6; }
+
+/* ===== Fundo com pattern (pontos + grade + brilhos) ===== */
+main[class*="_homePageContent_"],
+main[class*="_homePageContent_"] [class*="_content_1erkk"] {
+  background-color: var(--hg-bg) !important;
+  background-image:
+    radial-gradient(circle at 12% 8%, var(--hg-glow-a), transparent 38%),
+    radial-gradient(circle at 88% 92%, var(--hg-glow-b), transparent 40%),
+    radial-gradient(var(--hg-dot) 1.4px, transparent 1.6px),
+    linear-gradient(var(--hg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hg-grid) 1px, transparent 1px) !important;
+  background-size: auto, auto, 22px 22px, 44px 44px, 44px 44px !important;
+  background-repeat: repeat !important;
+  background-attachment: local !important;
+}
+main[class*="_homePageContent_"] { min-height: 100vh; }
+
+main[class*="_homePageContent_"] [class*="_title_ydhzx"] {
+  font-weight: 800 !important;
+  letter-spacing: -.01em;
+  color: var(--hg-ink);
+}
+
+/* ===== Boas-vindas ===== */
+[class*="_welcome_"] h3 { font-weight: 800 !important; letter-spacing: -.02em; color: var(--hg-ink); }
+[class*="_welcome_"] h6 { color: var(--hg-muted) !important; font-weight: 500; }
+
+/* ===== Cards com efeito 3D leve =====
+   A inclinação fica numa camada de fundo (::before) e NÃO no card: transform/perspective no card faz ele
+   virar a referência de posição dos popovers (tooltips "?" da Huggy usam position:fixed) e eles aparecem
+   deslocados. isolation:isolate cria o contexto de empilhamento sem afetar o posicionamento dos filhos. */
+[class*="_mainContent_nm1mv"],
+[class*="_box_nm1mv"] {
+  position: relative;
+  isolation: isolate;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 20px !important;
+}
+[class*="_mainContent_nm1mv"]::before,
+[class*="_box_nm1mv"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 20px;
+  border: 1px solid var(--hg-card-border);
+  box-shadow:
+    0 1px 0 var(--hg-hl) inset,
+    0 2px 4px var(--hg-shadow-ink),
+    0 14px 28px -8px var(--hg-shadow),
+    0 30px 60px -24px var(--hg-shadow);
+  transform: perspective(1400px) rotateX(2deg);
+  transform-origin: 50% 100%;
+}
+[class*="_mainContent_nm1mv"]::before { background: var(--hg-surface-alpha); }
+[class*="_box_nm1mv"]::before { background: var(--hg-box-bg); }
+[class*="_mainContent_nm1mv"] {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-bottom: 22px !important;
+}
+/* o wrapper é um grid de 2 linhas fixas (298px); com os ícones em boxes o conteúdo é maior, então as linhas crescem */
+[class*="_wrapper_nm1mv"] { grid-template-rows: repeat(2, minmax(298px, auto)) !important; }
+[class*="_mainContent_nm1mv"] [class*="_reloadBox_1jdau"],
+[class*="_mainContent_nm1mv"] [class*="_body_1jdau"] { height: auto !important; min-height: 0 !important; }
+[class*="_mainContent_nm1mv"] [class*="_body_1jdau"] { padding-bottom: 18px; }
+[class*="_mainContent_nm1mv"] [class*="_dataBox"] { overflow: visible; }
+
+[class*="_dataBox"] {
+  border-radius: 16px !important;
+  border: 1px solid var(--hg-line) !important;
+  background: linear-gradient(180deg, var(--hg-surface), var(--hg-surface-soft)) !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 8px 18px -8px var(--hg-shadow) !important;
+  transition: transform .25s, box-shadow .25s;
+}
+
+/* gráfico (ApexCharts) legível nos dois temas */
+html[data-hg-theme="dark"] .apexcharts-text,
+html[data-hg-theme="dark"] .apexcharts-legend-text { fill: var(--hg-muted) !important; color: var(--hg-muted) !important; }
+html[data-hg-theme="dark"] .apexcharts-gridline,
+html[data-hg-theme="dark"] .apexcharts-xaxis-tick,
+html[data-hg-theme="dark"] .apexcharts-xaxis line { stroke: var(--hg-line) !important; }
+
+/* ===== Página inicial no escuro: camadas e textos com cor fixa na Huggy ===== */
+html[data-hg-theme="dark"] [class*="_reloadBox_1jdau"] { background-color: transparent !important; }
+html[data-hg-theme="dark"] [class*="_notice_lmm9a"] {
+  background: var(--hg-surface-soft) !important;
+  color: var(--hg-ink) !important;
+  border: 1px solid var(--hg-line);
+}
+/* _2YYdYH (build da Huggy) = pílula "Desativar prévia" */
+html[data-hg-theme="dark"] [class~="_2YYdYH"] { background: var(--hg-surface-soft) !important; border: 1px solid var(--hg-line); }
+html[data-hg-theme="dark"] [class~="_2YYdYH"] span { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] [class*="_fontBg_rfy1r"] { color: var(--hg-violet-ink) !important; }
+html[data-hg-theme="dark"] [class*="_box_nm1mv"],
+html[data-hg-theme="dark"] [class*="_box_nm1mv"] h6,
+html[data-hg-theme="dark"] [class*="_box_nm1mv"] div { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] [class*="_box_nm1mv"] div { border-color: var(--hg-line-strong) !important; }
+
+/* seletor de data (vue2-datepicker) */
+html[data-hg-theme="dark"] .mx-input { background: var(--hg-surface-soft) !important; color: var(--hg-ink) !important; border-color: var(--hg-line) !important; }
+html[data-hg-theme="dark"] .mx-datepicker-popup { background: var(--hg-surface) !important; color: var(--hg-ink) !important; border-color: var(--hg-line) !important; }
+html[data-hg-theme="dark"] .mx-calendar-header-label,
+html[data-hg-theme="dark"] .mx-table th,
+html[data-hg-theme="dark"] .mx-table .cell { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] .mx-table .cell:hover { background: var(--hg-pill) !important; }
+html[data-hg-theme="dark"] .mx-table .cell.not-current-month { color: var(--hg-muted-2) !important; }
+html[data-hg-theme="dark"] .mx-table .cell.active { background: var(--hg-violet) !important; color: #fff !important; }
+
+/* ===== Menu lateral ===== */
+aside[class*="_aside_"] { background: linear-gradient(180deg, var(--hg-aside-a), var(--hg-aside-b)) !important; }
+[class*="_buttonMenuBar_"] {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px auto !important;
+  background: rgba(255, 255, 255, .06) !important;
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .08) inset;
+  transition: all .25s;
+}
+/* sem deslocamento no hover: o menu de ajuda abre dentro deste botão e fugia do mouse (piscava) */
+[class*="_buttonMenuBar_"]:hover { background: rgba(255, 255, 255, .14) !important; }
+[class*="_buttonMenuBar_"].active,
+[class*="_buttonMenuBar_"][class*="active"],
+[class*="_buttonMenuBar_"][class*="selected"] {
+  background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)) !important;
+  box-shadow: 0 8px 18px -6px rgba(214, 36, 159, .7) !important;
+}
+
+/* ===== Janelas laterais do menu (Buscar, notificações, ajuda...): fundo e textos fixos na Huggy ===== */
+[class*="_window_t74fz"] {
+  background-color: var(--hg-surface) !important;
+  border-right: 1px solid var(--hg-line);
+  box-shadow: 18px 0 40px -24px var(--hg-shadow);
+}
+html[data-hg-theme="dark"] [class*="_window_t74fz"] { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] [class*="_window_t74fz"] [class*="_title_wquwc"],
+html[data-hg-theme="dark"] [class*="_window_t74fz"] [class*="_title_wquwc"] span { color: var(--hg-ink) !important; font-weight: 700; }
+html[data-hg-theme="dark"] [class*="_closeIcon_wquwc"],
+html[data-hg-theme="dark"] [class*="_closeIcon_wquwc"] i { color: var(--hg-muted) !important; }
+html[data-hg-theme="dark"] [class*="_closeIcon_wquwc"]:hover i { color: var(--hg-ink) !important; }
+[class*="_window_t74fz"] input.form-control {
+  background: var(--hg-surface-soft) !important;
+  color: var(--hg-ink) !important;
+  border: 1px solid var(--hg-line) !important;
+  border-radius: 10px !important;
+}
+[class*="_window_t74fz"] input.form-control:focus { border-color: var(--hg-violet) !important; box-shadow: 0 0 0 3px var(--hg-pill) !important; outline: 0; }
+[class*="_window_t74fz"] input.form-control::placeholder { color: var(--hg-muted-2); opacity: 1; }
+html[data-hg-theme="dark"] [class*="_placeholder_o3y2z"],
+html[data-hg-theme="dark"] [class*="_placeholder_o3y2z"] span { color: var(--hg-muted-2) !important; }
+html[data-hg-theme="dark"] [class*="_placeholder_o3y2z"] i { color: var(--hg-line-strong) !important; }
+
+/* resultados da busca */
+html[data-hg-theme="dark"] [class*="_name_o3y2z"] { color: var(--hg-ink) !important; font-weight: 600; }
+html[data-hg-theme="dark"] [class*="_phone_o3y2z"],
+html[data-hg-theme="dark"] [class*="_results_o3y2z"] [class*="_title_o3y2z"] { color: var(--hg-muted) !important; }
+html[data-hg-theme="dark"] [class*="_results_o3y2z"] li a:hover { background: var(--hg-pill); }
+
+/* ===== Painel flutuante (notificações): fundo branco e cinzas fixos na Huggy ===== */
+html[data-hg-theme="dark"] [class*="_floatContent_1ls7e"] {
+  background-color: var(--hg-surface) !important;
+  color: var(--hg-ink) !important;
+  border: 1px solid var(--hg-line);
+}
+html[data-hg-theme="dark"] [class*="_title_7tec9"],
+html[data-hg-theme="dark"] [class*="_title_1ls7e"],
+html[data-hg-theme="dark"] [class*="_title_1ls7e"] span,
+html[data-hg-theme="dark"] [class*="_text_7tec9"] b { color: var(--hg-ink) !important; }
+html[data-hg-theme="dark"] [class*="_body_7tec9"],
+html[data-hg-theme="dark"] [class*="_body_7tec9"] i,
+html[data-hg-theme="dark"] [class*="_text_7tec9"],
+html[data-hg-theme="dark"] [class*="_daySeparator_7tec9"] { color: var(--hg-muted) !important; }
+html[data-hg-theme="dark"] [class*="_date_7tec9"] { color: var(--hg-muted-2) !important; }
+
+/* ===== Notificações: cada uma é um card com limite bem marcado (claro e escuro) ===== */
+[class*="_notifications_7tec9"] {
+  background: var(--hg-bg-2);          /* fundo tingido: a borda do card (branca/escura) se destaca */
+  padding: 6px 12px 14px !important;
+}
+[class*="_daySeparator_7tec9"] {
+  padding: 14px 4px 8px !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--hg-muted);
+}
+[class*="_notification_7tec9"] {
+  margin: 0 0 10px;
+  padding: 14px 16px 14px 12px !important;
+  background: var(--hg-surface);
+  border: 1px solid var(--hg-line);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 2px 4px var(--hg-shadow-ink), 0 10px 20px -14px var(--hg-shadow);
+  transition: background .15s, border-color .15s;
+}
+/* hover: a Huggy fixa rgb(248,248,248), que fica branco no escuro */
+[class*="_notification_7tec9"]:hover {
+  background-color: var(--hg-surface-soft) !important;
+  border-color: var(--hg-line-strong);
+}
+/* não lida (ponto azul, sem a classe _Active_): faixa lateral de destaque */
+[class*="_notification_7tec9"]:has([class*="_readButton_7tec9"]:not([class*="_Active_eqzux"])) {
+  border-color: var(--hg-line-strong);
+  box-shadow:
+    inset 3px 0 0 var(--hg-violet),
+    0 1px 0 var(--hg-hl) inset,
+    0 2px 4px var(--hg-shadow-ink),
+    0 10px 20px -14px var(--hg-shadow);
+}
+
+/* ===== Ícones dentro de boxes ===== */
+[class*="_content_rfy1r"] i.locke {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  font-size: 18px;
+  margin-right: 8px;
+  background: linear-gradient(135deg, var(--hg-icon-a), var(--hg-icon-b));
+  color: var(--hg-primary-ink) !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 6px 12px -5px var(--hg-shadow);
+  vertical-align: middle;
+}
+i.locke-help[class*="EtT5Z1"] {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  font-size: 13px;
+  background: var(--hg-pill);
+  color: var(--hg-violet-ink) !important;
+  transition: all .2s;
+}
+i.locke-help[class*="EtT5Z1"]:hover { background: var(--hg-violet); color: #fff !important; transform: scale(1.1); }
+
+/* Botões de navegar (anterior/próximo): estiliza o botão, não o ícone */
+button:has(> span > i.locke-back),
+button:has(> span > i.locke-forward) {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  border-radius: 11px !important;
+  background: var(--hg-surface) !important;
+  border: 1px solid var(--hg-line) !important;
+  color: var(--hg-violet-ink) !important;
+  box-shadow: 0 4px 10px -6px var(--hg-shadow);
+  transition: background .15s, border-color .15s, color .15s;
+}
+button:has(> span > i.locke-back):hover:not(:disabled),
+button:has(> span > i.locke-forward):hover:not(:disabled) {
+  background: var(--hg-pill) !important;
+  border-color: var(--hg-line-strong) !important;
+}
+button:disabled:has(> span > i.locke-back),
+button:disabled:has(> span > i.locke-forward) {
+  background: var(--hg-disabled-bg) !important;
+  color: var(--hg-disabled-fg) !important;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+button > span:has(> i.locke-back),
+button > span:has(> i.locke-forward) { width: auto !important; height: auto !important; }
+i.locke-back,
+i.locke-forward {
+  width: auto;
+  height: auto;
+  font-size: 16px;
+  background: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+/* Ilustrações dos cards Spotlight/Help em box de vidro */
+[class*="_box_nm1mv"] img {
+  padding: 16px;
+  border-radius: 24px;
+  background: var(--hg-glass);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 18px 30px -12px var(--hg-shadow);
+  transform: translateZ(30px);
+  transition: transform .35s;
+}
+
+/* =====================================================================
+   TELA DE CONTATOS (Pessoas)
+   ===================================================================== */
+
+/* ===== Controles (visualização + ocultar sem nome) ===== */
+.hg-controls { display: inline-flex; align-items: center; gap: 10px; margin-right: 10px; }
+.hg-seg {
+  display: inline-flex; gap: 2px; padding: 3px; background: var(--hg-surface);
+  border: 1px solid var(--hg-line); border-radius: 12px;
+  box-shadow: 0 4px 10px -6px var(--hg-shadow);
+}
+.hg-seg button {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 30px; border: 0; border-radius: 9px;
+  background: transparent; color: var(--hg-muted); cursor: pointer; transition: all .2s;
+}
+.hg-seg button:hover { background: var(--hg-pill); color: var(--hg-violet-ink); }
+.hg-seg button.is-active {
+  background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)); color: #fff;
+  box-shadow: 0 6px 12px -5px rgba(109, 74, 255, .6);
+}
+.hg-switch {
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 12px;
+  border: 1px solid var(--hg-line); border-radius: 12px; background: var(--hg-surface);
+  color: var(--hg-ink); font-size: 13px; font-weight: 600; cursor: pointer;
+  box-shadow: 0 4px 10px -6px var(--hg-shadow);
+}
+.hg-track { position: relative; width: 34px; height: 20px; border-radius: 99px; background: var(--hg-track); transition: background .2s; }
+.hg-thumb {
+  position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .2s;
+}
+.hg-switch.is-on .hg-track { background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)); }
+.hg-switch.is-on .hg-thumb { transform: translateX(14px); }
+.hg-count {
+  font-style: normal; font-size: 11px; font-weight: 700; color: var(--hg-violet-ink);
+  background: var(--hg-pill); border-radius: 99px; padding: 1px 7px;
+}
+.hg-count:empty { display: none; }
+
+/* ===== Tabela de pessoas ===== */
+/* oculta contatos sem nome (marcados pelo contacts.js) */
+table.hg-people[data-hg-hide-blank="1"] tbody tr[data-hg-blank] { display: none; }
+/* oculta as colunas Organizações e Grupos */
+table.hg-people th:nth-child(3), table.hg-people td:nth-child(3),
+table.hg-people th:nth-child(4), table.hg-people td:nth-child(4) { display: none; }
+
+/* espaçamento entre as linhas */
+table.hg-people[data-hg-view="table"] { border-collapse: separate !important; border-spacing: 0 10px !important; }
+table.hg-people[data-hg-view="table"] tbody td {
+  background: var(--hg-surface); border-top: 1px solid var(--hg-line); border-bottom: 1px solid var(--hg-line);
+  transition: background .15s;
+}
+table.hg-people[data-hg-view="table"] tbody td:nth-child(2) { border-left: 1px solid var(--hg-line); border-radius: 14px 0 0 14px; }
+table.hg-people[data-hg-view="table"] tbody td:last-child { border-right: 1px solid var(--hg-line); border-radius: 0 14px 14px 0; }
+table.hg-people[data-hg-view="table"] tbody td:first-child { padding: 0; border: 0; background: transparent; }
+table.hg-people[data-hg-view="table"] tbody tr:hover td { background: var(--hg-surface-soft); }
+
+/* ===== Visualização em cards ===== */
+table.hg-people[data-hg-view="cards"] { display: block; border-spacing: 0 !important; }
+table.hg-people[data-hg-view="cards"] thead { display: none; }
+table.hg-people[data-hg-view="cards"] tbody {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; padding: 8px 6px 22px;
+}
+table.hg-people[data-hg-view="cards"] tbody tr {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px;
+  height: auto !important; min-height: 0 !important; padding: 26px 16px 18px;
+  background: var(--hg-surface); border: 1px solid var(--hg-line); border-radius: 20px;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 2px 4px var(--hg-shadow-ink), 0 14px 28px -10px var(--hg-shadow);
+}
+table.hg-people[data-hg-view="cards"] tbody td {
+  display: block; width: auto !important; height: auto !important; padding: 0 !important;
+  border: 0 !important; background: transparent !important; text-align: center;
+}
+table.hg-people[data-hg-view="cards"] tbody td:nth-child(1) { display: none; }
+table.hg-people[data-hg-view="cards"] td:nth-child(2) { width: 100% !important; }
+table.hg-people[data-hg-view="cards"] td:nth-child(2) > span { display: block; }
+table.hg-people[data-hg-view="cards"] td:nth-child(2) > span > div {
+  flex-direction: column; align-items: center; gap: 12px; width: 100%;
+}
+/* checkbox no canto do card */
+table.hg-people[data-hg-view="cards"] td:nth-child(2) > span > div > div:first-child {
+  position: absolute; top: 14px; left: 14px; width: auto; height: auto;
+}
+table.hg-people[data-hg-view="cards"] td:nth-child(2) > span > div > div:nth-child(2),
+table.hg-people[data-hg-view="cards"] td:nth-child(2) > span > div > div:nth-child(2) > div,
+table.hg-people[data-hg-view="cards"] td:nth-child(2) > span > div > div:nth-child(2) > div > div {
+  width: 100% !important; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center;
+}
+/* avatar com anel degradê */
+table.hg-people[data-hg-view="cards"] td:nth-child(2) div:has(> img:not(.emojione)) {
+  width: 76px !important; height: 76px !important; border-radius: 50%; padding: 3px;
+  background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet));
+  box-shadow: 0 10px 20px -8px rgba(109, 74, 255, .55);
+}
+table.hg-people[data-hg-view="cards"] td:nth-child(2) img:not(.emojione) {
+  width: 100% !important; height: 100% !important; border-radius: 50%; object-fit: cover; border: 3px solid var(--hg-surface);
+}
+table.hg-people[data-hg-view="cards"] td:nth-child(2) div:has(> img:not(.emojione)) + span {
+  width: 100% !important; white-space: normal; font-weight: 700; font-size: 14px; color: var(--hg-ink); word-break: break-word;
+}
+/* rótulo para contatos sem nome (quando o filtro está desligado) */
+table.hg-people tbody tr[data-hg-blank] td:nth-child(2) div:has(> img:not(.emojione)) + span::before {
+  content: 'Sem nome'; color: var(--hg-muted-2); font-style: italic; font-weight: 500;
+}
+/* data de criação como pílula */
+table.hg-people[data-hg-view="cards"] td:nth-child(5) {
+  display: flex !important; align-items: center; gap: 6px; white-space: nowrap;
+  font-size: 12px; color: var(--hg-muted); background: var(--hg-pill) !important;
+  border-radius: 99px; padding: 5px 12px !important;
+}
+table.hg-people[data-hg-view="cards"] td:nth-child(5)::before { content: 'Criado em'; opacity: .8; white-space: nowrap; }
+table.hg-people[data-hg-view="cards"] td:last-child { width: 100% !important; }
+table.hg-people[data-hg-view="cards"] td:last-child button { width: 100%; justify-content: center; gap: 6px; }
+
+/* ===== Botão "Iniciar chat": ícone + texto centralizados ===== */
+table.hg-people td:last-child button { display: inline-flex !important; align-items: center; justify-content: center; gap: 6px; }
+table.hg-people td:last-child button > * { margin: 0 !important; }
+
+/* ===== Aviso quando todos os contatos da página estão sem nome e ocultos ===== */
+.hg-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 72px 16px; text-align: center; color: var(--hg-muted); font-size: 13px;
+}
+.hg-empty strong { font-size: 16px; font-weight: 700; color: var(--hg-ink); }
+.hg-empty button {
+  margin-top: 10px; height: 34px; padding: 0 16px; border: 0; border-radius: 99px;
+  background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)); color: #fff;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+}
+
+/* ===== Emojis nos nomes (imagens .emojione): tamanho inline, junto do texto ===== */
+table.hg-people img.emojione {
+  display: inline-block !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+  object-fit: contain;
+  vertical-align: -.25em;
+}
+
+/* =====================================================================
+   TELA DE CHATS (Atendimentos)
+   ===================================================================== */
+
+/* ===== Fundo da página com pattern ===== */
+[class*="_inboxApp_"],
+[class*="_container_1n0ft"] {
+  background-color: var(--hg-bg) !important;
+  background-image:
+    radial-gradient(circle at 8% 10%, var(--hg-glow-a), transparent 36%),
+    radial-gradient(circle at 92% 90%, var(--hg-glow-b), transparent 40%),
+    radial-gradient(var(--hg-dot) 1.3px, transparent 1.5px),
+    linear-gradient(var(--hg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hg-grid) 1px, transparent 1px) !important;
+  background-size: auto, auto, 22px 22px, 44px 44px, 44px 44px !important;
+  background-repeat: repeat !important;
+}
+
+/* Painéis: lista (1º), conversa (2º) e barra direita (3º) */
+[class*="_inboxApp_"] > div > div > div {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 10px 24px -12px var(--hg-shadow) !important;
+}
+[class*="_inboxApp_"] > div > div > div:nth-child(2) {
+  background-color: var(--hg-glass) !important;
+  background-image: radial-gradient(var(--hg-dot-soft) 1.2px, transparent 1.4px) !important;
+  background-size: 20px 20px !important;
+}
+[class*="_inboxApp_"] > div > div > div:nth-child(1) { background: var(--hg-list-bg) !important; }
+[class*="_inboxApp_"] > div > div > div:nth-child(3) { background: var(--hg-surface-alpha-2) !important; }
+
+/* ===== Cards de cliente nas filas ===== */
+[data-test="chatitem"] {
+  box-sizing: border-box;
+  margin: 6px 10px;
+  width: auto;
+  padding: 12px 12px 10px !important;
+  background: var(--hg-item-bg) !important;
+  border: 1px solid var(--hg-line);
+  border-radius: 16px;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 2px 4px var(--hg-shadow-ink), 0 10px 20px -12px var(--hg-shadow);
+  transition: background .15s, border-color .15s;
+}
+[data-test="chatitem"]:hover { background: var(--hg-item-hover) !important; border-color: var(--hg-line-strong); }
+
+/* avatar com anel e respiro até o texto */
+[data-test="chatitem"] > div:first-child > div { gap: 12px; }
+[data-test="chatitem"] img { border-radius: 50%; box-shadow: 0 0 0 2px var(--hg-surface), 0 0 0 3.5px var(--hg-line-strong); }
+[data-test="chatitem"] [data-test="ex-channel"] { color: #25d366; }
+
+/* nome em destaque e prévia da mensagem mais discreta */
+[data-test="chatitem"] > div:first-child > div > div:nth-child(2) > div > div:first-child > div:first-child { font-weight: 700; color: var(--hg-ink); }
+[data-test="chatitem"] > div:first-child > div > div:nth-child(2) > div > div:nth-child(2) { color: var(--hg-muted); }
+
+/* etiqueta de departamento */
+[data-test="chatitem"] [data-test="ex-department"] {
+  background: var(--hg-pill) !important;
+  border: 1px solid var(--hg-line) !important;
+  border-radius: 8px !important;
+  color: var(--hg-violet-ink) !important;
+}
+[data-test="chatitem"] [data-test="ex-department"] * { color: var(--hg-violet-ink) !important; }
+
+/* ===== Busca dentro dos chats: cabeçalho + campo viram um bloco com tom próprio =====
+   Classes de build da Huggy (podem mudar num deploy deles): SX-Sei = faixa do campo de busca.
+   O cabeçalho ("Busca" + ícones) é o irmão anterior dela. */
+div:has(+ [class~="SX-Sei"]),
+[class~="SX-Sei"] {
+  background: var(--hg-search-bg) !important;
+  margin-left: 6px !important;
+  margin-right: 6px !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
+div:has(+ [class~="SX-Sei"]) {
+  margin-top: 6px !important;
+  padding: 8px 8px 4px 14px !important;
+  border-radius: 14px 14px 0 0;
+}
+div:has(+ [class~="SX-Sei"]) span { font-weight: 700; color: var(--hg-ink); }
+[class~="SX-Sei"] {
+  height: auto !important;
+  padding: 4px 10px 12px !important;
+  border-radius: 0 0 14px 14px;
+  border-bottom: 1px solid var(--hg-line);
+  box-shadow: 0 12px 18px -16px var(--hg-shadow);
+}
+/* o campo */
+[class~="SX-Sei"] span:has(input[placeholder="Buscar"]) {
+  height: 40px !important;
+  background: var(--hg-search-field) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 6px 14px -10px var(--hg-shadow);
+  transition: border-color .15s, box-shadow .15s;
+}
+[class~="SX-Sei"] span:has(input[placeholder="Buscar"]):focus-within {
+  border-color: var(--hg-violet) !important;
+  box-shadow: 0 0 0 3px var(--hg-pill), 0 6px 14px -10px var(--hg-shadow);
+}
+[class~="SX-Sei"] input[placeholder="Buscar"] {
+  height: 38px !important;
+  font-size: 14px !important;
+  color: var(--hg-ink) !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+[class~="SX-Sei"] input[placeholder="Buscar"]::placeholder { color: var(--hg-muted-2); opacity: 1; }
+[class~="SX-Sei"] span:has(input[placeholder="Buscar"]) i { color: var(--hg-violet-ink) !important; }
+
+/* ===== Lista de opções da busca (id:, contato:, email:...) =====
+   Classes de build da Huggy (podem mudar num deploy deles): GTc5Sr = a lista (ul). O resto é achado por estrutura. */
+/* o popover */
+div:has(> div > [class~="GTc5Sr"]) {
+  background: var(--hg-surface) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 28px 56px -20px var(--hg-shadow), 0 8px 18px -10px var(--hg-shadow) !important;
+  overflow: hidden;
+}
+/* linha do checkbox "Buscar em suas conversas": vira o cabeçalho do popover */
+div:has(> div > [class~="GTc5Sr"]) > div:first-child {
+  background: var(--hg-search-bg);
+  border-bottom: 1px solid var(--hg-line) !important;
+  padding: 12px 16px !important;
+  font-weight: 600;
+  color: var(--hg-ink);
+}
+div:has(> [class~="GTc5Sr"]) { background: transparent !important; padding: 8px 8px 10px !important; }
+
+/* itens */
+[class~="GTc5Sr"] { gap: 2px; }
+[class~="GTc5Sr"] > li {
+  align-items: center;
+  min-height: 38px;
+  padding: 6px 12px 6px 8px !important;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .12s;
+}
+[class~="GTc5Sr"] > li:hover { background: var(--hg-pill); }
+
+/* a "chave" (id:, contato:...) como um chip */
+[class~="GTc5Sr"] > li > div {
+  display: flex !important;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px !important;
+  background: var(--hg-pill) !important;
+  border: 1px solid var(--hg-line);
+  border-radius: 8px;
+  letter-spacing: .01em;
+  transition: background .12s, border-color .12s;
+}
+[class~="GTc5Sr"] > li > div span { color: var(--hg-violet-ink) !important; font-weight: 700; font-size: 13px; }
+[class~="GTc5Sr"] > li:hover > div {
+  background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)) !important;
+  border-color: transparent;
+}
+[class~="GTc5Sr"] > li:hover > div span { color: #fff !important; }
+
+/* a descrição */
+[class~="GTc5Sr"] > li > span {
+  margin-left: auto;
+  padding-left: 12px;
+  font-size: 13px;
+  text-align: right;
+  color: var(--hg-muted) !important;
+}
+[class~="GTc5Sr"] > li:hover > span { color: var(--hg-ink) !important; }
+
+/* separador entre os dois grupos de filtros */
+[class~="GTc5Sr"] > hr { margin: 8px 6px !important; border: 0 !important; border-top: 1px solid var(--hg-line) !important; opacity: 1; }
+
+/* ===== Modais (ex.: Finalizar conversa): vidro acrílico =====
+   Classes de build da Huggy (podem mudar num deploy deles): UjPLJY = overlay, i8TELF = diálogo,
+   Xm7jKu = corpo, XVthTA = rodapé, wptU5P = rótulo, CHKp1l = asterisco, DYcrIg = caixa do select.
+   O desfoque fica numa camada (::before) do diálogo, NÃO no diálogo: backdrop-filter no diálogo deslocaria
+   os popovers de position:fixed. O overlay não recebe filtro, senão a camada só enxergaria o próprio overlay. */
+[class~="UjPLJY"] { background: var(--hg-scrim) !important; }
+[class~="UjPLJY"] > [class~="i8TELF"] {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+}
+[class~="UjPLJY"] > [class~="i8TELF"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--hg-acrylic-hl), rgba(255, 255, 255, 0) 42%), var(--hg-acrylic);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid var(--hg-acrylic-border);
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 44px 90px -28px var(--hg-shadow), 0 12px 28px -14px var(--hg-shadow);
+}
+/* cabeçalho */
+[class~="i8TELF"] > div:first-child > div { padding: 18px 24px 14px !important; border-bottom: 1px solid var(--hg-line); }
+[class~="i8TELF"] > div:first-child span { font-weight: 800; color: var(--hg-ink) !important; letter-spacing: -.01em; }
+[class~="i8TELF"] > div:first-child i.locke {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  border-radius: 11px;
+  font-size: 17px;
+  background: linear-gradient(135deg, var(--hg-icon-a), var(--hg-icon-b));
+  color: var(--hg-primary-ink) !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 6px 12px -5px var(--hg-shadow);
+}
+/* corpo: rótulos e campos */
+[class~="Xm7jKu"] { padding-top: 18px !important; }
+[class~="i8TELF"] span[class*="wptU5P"] { font-weight: 700; color: var(--hg-ink) !important; }
+[class~="i8TELF"] span[class*="CHKp1l"] { color: var(--hg-required) !important; font-weight: 700; }
+[class~="i8TELF"] [class*="DYcrIg"],
+[class~="i8TELF"] textarea,
+[class~="i8TELF"] input:not([type="checkbox"]):not([type="radio"]) {
+  background: var(--hg-surface-alpha) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 12px !important;
+  color: var(--hg-ink) !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+[class~="i8TELF"] [class*="DYcrIg"] { min-height: 40px; }
+[class~="i8TELF"] [class*="DYcrIg"]:hover,
+[class~="i8TELF"] textarea:hover { border-color: var(--hg-violet) !important; }
+[class~="i8TELF"] textarea:focus,
+[class~="i8TELF"] input:focus,
+[class~="i8TELF"] [class*="DYcrIg"]:focus-within { border-color: var(--hg-violet) !important; box-shadow: 0 0 0 3px var(--hg-pill); outline: 0; }
+[class~="i8TELF"] ::placeholder { color: var(--hg-muted-2); opacity: 1; }
+/* caixa do "Resumo" (editor TipTap/ProseMirror dentro de um contêiner com fundo branco; klK1MS = classe de build) */
+[class~="i8TELF"] [class~="klK1MS"] {
+  background: var(--hg-surface-alpha) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 12px !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+[class~="i8TELF"] [class~="klK1MS"]:hover { border-color: var(--hg-violet) !important; }
+[class~="i8TELF"] [class~="klK1MS"]:focus-within { border-color: var(--hg-violet) !important; box-shadow: 0 0 0 3px var(--hg-pill); }
+[class~="i8TELF"] .ProseMirror { color: var(--hg-ink) !important; }
+[class~="i8TELF"] .ProseMirror p.is-editor-empty:first-child::before { color: var(--hg-muted-2) !important; }
+/* lista do select (componente compartilhado: modais, filtros...; -X831F = classe de build) */
+[class*="-X831F"] {
+  background: var(--hg-surface) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 48px -18px var(--hg-shadow), 0 6px 14px -8px var(--hg-shadow) !important;
+  overflow: hidden;
+}
+/* a busca dentro da lista já tem a própria moldura: sem o estilo genérico de campo */
+[class*="-X831F"] input:not([type="checkbox"]):not([type="radio"]) {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+[class*="-X831F"] span:has(> div > input) {
+  background: var(--hg-surface-soft) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 12px !important;
+}
+[class*="-X831F"] span:has(> div > input):focus-within { border-color: var(--hg-violet) !important; box-shadow: 0 0 0 3px var(--hg-pill); }
+/* rodapé */
+[class~="XVthTA"] {
+  padding: 14px 24px !important;
+  background: var(--hg-acrylic-foot);
+  border-top: 1px solid var(--hg-line);
+  border-radius: 0 0 20px 20px;
+}
+
+/* ===== Área do chat aberto: pattern atrás das mensagens ===== */
+div:has(> #chatPanel) {
+  background-color: var(--hg-bg-2) !important;
+  background-image:
+    radial-gradient(circle at 15% 12%, var(--hg-glow-a), transparent 38%),
+    radial-gradient(circle at 85% 88%, var(--hg-glow-b), transparent 40%),
+    radial-gradient(var(--hg-dot) 1.2px, transparent 1.4px),
+    linear-gradient(var(--hg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hg-grid) 1px, transparent 1px) !important;
+  background-size: auto, auto, 20px 20px, 40px 40px, 40px 40px !important;
+  background-repeat: repeat !important;
+  border-radius: 16px;
+}
+
+/* ===== Campo de mensagem do chat (card flutuante arredondado) =====
+   Classes de build da Huggy (podem mudar num deploy deles): klK1MS = o campo (mesma classe das caixas de texto dos modais),
+   CZt86O = faixa da mensagem marcada, NeBrlb = bloco da citação, AEJsbq = autor, H4TD-- = trecho citado.
+   Sem overflow/transform aqui: o emoji picker e outros popovers moram dentro do campo. */
+#chatPanel [class~="klK1MS"] {
+  margin: 8px 16px 14px !important;
+  width: auto !important;
+  background: var(--hg-surface-alpha-2) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 16px 32px -20px var(--hg-shadow), 0 4px 10px -6px var(--hg-shadow) !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+#chatPanel [class~="klK1MS"]:focus-within {
+  border-color: var(--hg-violet) !important;
+  box-shadow: 0 0 0 3px var(--hg-pill), 0 16px 32px -20px var(--hg-shadow) !important;
+}
+/* o texto longe da parede do campo */
+#chatPanel [class~="klK1MS"] .ProseMirror { padding: 14px 24px 14px 24px !important; }
+/* o placeholder é absolute com left:4px em relação ao campo inteiro: ancora no parágrafo, que já tem o respiro */
+#chatPanel [class~="klK1MS"] .ProseMirror p.is-editor-empty:first-child { position: relative; }
+#chatPanel [class~="klK1MS"] .ProseMirror p.is-editor-empty:first-child::before { left: 0 !important; color: var(--hg-muted-2) !important; }
+/* barra de ferramentas (+, anexo, emoji, microfone) alinhada ao novo respiro */
+#chatPanel [class~="klK1MS"] > div:last-child { padding-left: 10px; padding-right: 10px; padding-bottom: 6px; }
+
+/* botões da barra (Mais ações, Anexar, Emojis): pills mais largas, com área de clique maior */
+#chatPanel [class~="klK1MS"] button:has(i.locke-zoom_in),
+#chatPanel [class~="klK1MS"] button:has(i.locke-attach),
+#chatPanel [class~="klK1MS"] button:has(i.locke-emoji) {
+  min-width: 52px;
+  height: 32px !important;
+  padding: 0 16px !important;
+  border-radius: 99px !important;
+  justify-content: center;
+}
+#chatPanel [class~="klK1MS"] > div:last-child button:has(i.locke-zoom_in) { margin-right: 4px; }
+#chatPanel [class~="klK1MS"] > div:last-child button:has(i.locke-attach) { margin-right: 4px; }
+
+/* mensagem marcada (resposta): citação em card arredondado com barra violeta */
+#chatPanel [class~="CZt86O"] { padding: 14px 14px 0 !important; }
+#chatPanel [class~="NeBrlb"] {
+  background: var(--hg-pill) !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: inset 3px 0 0 var(--hg-violet) !important;   /* barra reta, recortada pelo canto arredondado */
+}
+#chatPanel [class~="NeBrlb"] > div { padding: 10px 12px !important; }
+#chatPanel [class~="AEJsbq"], #chatPanel [class~="AEJsbq"] * { font-weight: 700; color: var(--hg-violet-ink) !important; }
+#chatPanel [class~="H4TD--"], #chatPanel [class~="H4TD--"] * { color: var(--hg-muted) !important; }
+
+/* ===== Balões de mensagem =====
+   Classes de build da Huggy (podem mudar num deploy deles):
+   Jrexs9 = balão, H3n-pW = enviado, Gw1NhV = recebido */
+#chatPanel [class~="Jrexs9"] { border: 0 !important; transition: box-shadow .2s; }
+#chatPanel [class~="Jrexs9"][class~="H3n-pW"] {
+  background: linear-gradient(135deg, var(--hg-out-a) 0%, var(--hg-out-b) 100%) !important;
+  border-radius: 18px 18px 6px 18px !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .18) inset, 0 10px 20px -12px var(--hg-out-glow) !important;
+}
+/* texto do operador sempre branco puro (a Huggy usa tons com transparência em alguns trechos) */
+#chatPanel [class~="Jrexs9"][class~="H3n-pW"],
+#chatPanel [class~="Jrexs9"][class~="H3n-pW"] * { color: #fff; }
+#chatPanel [class~="Jrexs9"][class~="Gw1NhV"] {
+  background: var(--hg-bubble-in) !important;
+  border: 1px solid var(--hg-line) !important;
+  border-radius: 18px 18px 18px 6px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 8px 18px -12px var(--hg-shadow) !important;
+}
+
+/* ===== Citação dentro do balão (mensagem enviada/recebida como resposta) =====
+   Classe de build da Huggy (pode mudar num deploy deles): P4gS43 = bloco da citação.
+   A Huggy pinta esse bloco com um lilás claro fixo; aqui ele segue o balão em que está. */
+#chatPanel [class~="Jrexs9"] [class~="P4gS43"] {
+  border-radius: 10px !important;
+  border-left-width: 3px !important;
+}
+/* balão do operador: vidro branco translúcido, barra clara, texto branco */
+#chatPanel [class~="H3n-pW"] [class~="P4gS43"] {
+  background: rgba(255, 255, 255, .15) !important;
+  border-left-color: rgba(255, 255, 255, .8) !important;
+}
+#chatPanel [class~="H3n-pW"] [class~="P4gS43"] [class*="wptU5P"] { font-weight: 700; color: #fff !important; }
+#chatPanel [class~="H3n-pW"] [class~="P4gS43"] > div > div:last-child { opacity: .85; }
+/* balão recebido: tom do tema, barra violeta */
+#chatPanel [class~="Gw1NhV"] [class~="P4gS43"] {
+  background: var(--hg-pill) !important;
+  border-left-color: var(--hg-violet) !important;
+}
+#chatPanel [class~="Gw1NhV"] [class~="P4gS43"] [class*="wptU5P"] { font-weight: 700; color: var(--hg-violet-ink) !important; }
+#chatPanel [class~="Gw1NhV"] [class~="P4gS43"] > div > div:last-child,
+#chatPanel [class~="Gw1NhV"] [class~="P4gS43"] > div > div:last-child * { color: var(--hg-muted) !important; }
+
+/* ===== Lista de emojis (picker) =====
+   Classes de build da Huggy (podem mudar num deploy deles): sl-er8 = o picker (position:fixed),
+   sUBLtY = título de categoria (sticky), yqwQdO = botão de emoji. */
+[class~="sl-er8"] {
+  background: var(--hg-surface) !important;
+  color: var(--hg-ink) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 28px 56px -20px var(--hg-shadow), 0 8px 18px -10px var(--hg-shadow) !important;
+}
+[class~="sl-er8"] [class~="sUBLtY"] {
+  background: var(--hg-surface) !important;   /* o título "gruda" no topo: precisa cobrir os emojis que rolam por baixo */
+}
+[class~="sl-er8"] [class~="sUBLtY"] span {
+  color: var(--hg-muted) !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+[class~="sl-er8"] [class~="yqwQdO"] { border-radius: 8px; transition: background .12s; }
+[class~="sl-er8"] [class~="yqwQdO"]:hover { background: var(--hg-pill) !important; }
+/* a busca no rodapé do picker */
+[class~="sl-er8"] input {
+  background: transparent !important;
+  color: var(--hg-ink) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+/* moldura própria da busca (a Huggy já desenha uma; aqui só ajusto cor e cantos) */
+[class~="sl-er8"] span:has(input) {
+  background: var(--hg-surface-soft) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 10px !important;
+}
+[class~="sl-er8"] span:has(input) > div { background: transparent !important; border: 0 !important; }
+[class~="sl-er8"] input::placeholder { color: var(--hg-muted-2); opacity: 1; }
+[class~="sl-er8"] i.locke { color: var(--hg-muted); }
+
+/* ===== Painel "Filtrar conversas" (lista de chats) =====
+   Classes de build da Huggy (podem mudar num deploy deles): O7JqSg = o painel (position:fixed),
+   e8F-Io = conteúdo, wptU5P = rótulo, DYcrIg = caixa do select. */
+[class~="O7JqSg"] {
+  background: var(--hg-surface) !important;
+  color: var(--hg-ink) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 28px 56px -20px var(--hg-shadow), 0 8px 18px -10px var(--hg-shadow) !important;
+}
+/* título */
+[class~="O7JqSg"] > div:first-child { border-bottom: 1px solid var(--hg-line) !important; background: var(--hg-search-bg); }
+[class~="O7JqSg"] > div:first-child span { color: var(--hg-ink) !important; font-weight: 800; letter-spacing: -.01em; }
+/* rótulos e divisórias entre os grupos de filtros */
+[class~="O7JqSg"] span[class*="wptU5P"] { color: var(--hg-muted) !important; font-weight: 700; font-size: 12px; }
+[class~="O7JqSg"] [class~="e8F-Io"] * { border-color: var(--hg-line) !important; }
+/* campos (selects) */
+[class~="O7JqSg"] [class*="DYcrIg"] {
+  background: var(--hg-surface-soft) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 12px !important;
+  color: var(--hg-ink) !important;
+  transition: border-color .15s, box-shadow .15s;
+}
+[class~="O7JqSg"] [class*="DYcrIg"]:hover { border-color: var(--hg-violet) !important; }
+[class~="O7JqSg"] [class*="DYcrIg"]:focus-within { border-color: var(--hg-violet) !important; box-shadow: 0 0 0 3px var(--hg-pill); }
+/* linha de data: "Criadas em" (select) + intervalo de datas, numa moldura só (9Vve-p = classe de build) */
+[class~="O7JqSg"] [class*="9Vve-p"] {
+  background: var(--hg-surface-soft) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 12px !important;
+}
+[class~="O7JqSg"] [class*="9Vve-p"] button { background: transparent !important; }
+html[data-hg-theme="dark"] [class~="O7JqSg"] [class*="9Vve-p"] > div:first-child button,
+html[data-hg-theme="dark"] [class~="O7JqSg"] [class*="9Vve-p"] > div:first-child button * { color: var(--hg-violet-ink) !important; font-weight: 600; }
+/* rodapé com Limpar / Aplicar */
+[class~="O7JqSg"] > div:last-child {
+  background: var(--hg-acrylic-foot);
+  border-top: 1px solid var(--hg-line) !important;
+}
+
+/* ===== Histórico de contato (painel direito do chat) =====
+   Classes de build da Huggy (podem mudar num deploy deles): kl9D-t = item, ipk2ns = item atual/selecionado.
+   A Huggy usa um lilás quase branco fixo no hover e no item atual; no escuro isso deixa texto claro sobre fundo claro. */
+[class~="kl9D-t"] { transition: background .15s; }
+[class~="kl9D-t"]:hover { background-color: var(--hg-pill) !important; }
+[class~="kl9D-t"][class~="ipk2ns"] {
+  background-color: var(--hg-item-active) !important;
+  box-shadow: inset 3px 0 0 var(--hg-violet);
+}
+[class~="kl9D-t"][class~="ipk2ns"]:hover { background-color: var(--hg-item-active) !important; }
+html[data-hg-theme="dark"] [class~="kl9D-t"][class~="ipk2ns"] [class*="locke-whatsapp"],
+html[data-hg-theme="dark"] [class~="kl9D-t"][class~="ipk2ns"] span { color: var(--hg-ink) !important; }
+
+/* ===== Iniciar conversa (lista de contatos no painel direito) =====
+   Classe de build da Huggy (pode mudar num deploy deles): sfRali = item da lista.
+   Mesmo problema do histórico: hover em lilás quase branco fixo. */
+[class~="sfRali"] { transition: background .15s; }
+[class~="sfRali"]:hover { background-color: var(--hg-pill) !important; }
