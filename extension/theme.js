@@ -4,7 +4,16 @@
   // Tema: 'light' (padrão) ou 'dark'. Guardado no navegador e aplicado como
   // atributo no <html> o mais cedo possível (run_at: document_start) para não piscar.
   const KEY = 'hg-theme';
-  const read = () => { try { return localStorage.getItem(KEY) === 'dark' ? 'dark' : 'light'; } catch (_) { return 'light'; } };
+  // Na tela de login (legacy.huggy.app) ainda não há preferência salva: segue o tema do sistema operacional.
+  // No painel o padrão continua sendo o claro.
+  const systemTheme = () => (location.hostname === 'legacy.huggy.app' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const read = () => {
+    try {
+      const v = localStorage.getItem(KEY);
+      if (v === 'dark' || v === 'light') return v;
+    } catch (_) {}
+    return systemTheme();
+  };
   let theme = read();
   const apply = () => document.documentElement.setAttribute('data-hg-theme', theme);
   apply();

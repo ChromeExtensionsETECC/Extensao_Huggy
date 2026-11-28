@@ -1,0 +1,360 @@
+/* =====================================================================
+   TELA DE LOGIN da Huggy (classes LoginFrameContent_*, LoginCard_*, LoginInput_*, Button_*)
+   Layout: painel escuro inset à esquerda (ilustração + card de novidades) e formulário à direita,
+   que segue o tema claro/escuro. Os tokens --hg-* vêm do content.css.
+   Todas as regras de componentes ficam presas ao card (LoginCard_card), porque o painel legado da Huggy
+   (mesmo domínio) também usa classes Button_*.
+   ===================================================================== */
+:root {
+  --hg-hero-a: #251d52;
+  --hg-hero-b: #130f2e;
+  --hg-login-card: rgba(255, 255, 255, .82);
+}
+html[data-hg-theme="dark"]:root {
+  --hg-hero-a: #1c1544;
+  --hg-hero-b: #0a0818;
+  --hg-login-card: rgba(27, 23, 48, .82);
+}
+
+/* ===== Página ===== */
+main[class*="LoginFrameContent_main"] {
+  background-color: var(--hg-bg) !important;
+  background-image:
+    radial-gradient(circle at 78% 12%, var(--hg-glow-a), transparent 40%),
+    radial-gradient(circle at 96% 96%, var(--hg-glow-b), transparent 42%),
+    radial-gradient(var(--hg-dot) 1.4px, transparent 1.6px),
+    linear-gradient(var(--hg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hg-grid) 1px, transparent 1px) !important;
+  background-size: auto, auto, 24px 24px, 48px 48px, 48px 48px !important;
+  min-height: 100vh;
+  color: var(--hg-ink);
+}
+
+/* ===== Painel esquerdo (herói): a ilustração original da Huggy, num cartão escuro inset ===== */
+aside[class*="LoginFrameContent_aside_"] {
+  top: 16px !important;
+  left: 16px !important;
+  bottom: 16px !important;
+  right: auto !important;
+  width: calc(52% - 24px) !important;
+  height: auto !important;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(120% 80% at 18% 8%, rgba(214, 36, 159, .30), transparent 55%),
+    radial-gradient(90% 70% at 92% 100%, rgba(109, 74, 255, .38), transparent 55%),
+    linear-gradient(160deg, var(--hg-hero-a), var(--hg-hero-b)) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 40px 90px -36px var(--hg-shadow);
+}
+[class*="LoginFrameContent_aside_bg"] {
+  box-sizing: border-box;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 70px 28px 230px;                 /* deixa espaço para o logo (topo) e o card de novidades (base) */
+  background-origin: content-box;
+}
+
+/* logo e nome no topo do painel esquerdo */
+[class*="LoginFrameContent_logo"] {
+  position: fixed !important;
+  top: 44px !important;
+  left: 56px !important;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: auto !important;
+}
+[class*="LoginFrameContent_logo"] img { width: 40px !important; height: 40px !important; }
+[class*="LoginFrameContent_logo"]::after {
+  content: 'Huggy';
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+/* ===== Lado direito: formulário centralizado ===== */
+section[class*="LoginFrameContent_section"] {
+  box-sizing: border-box;
+  width: 48%;
+  min-height: 100vh;
+  margin-left: 52%;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[class*="LoginFrameContent_container"] {
+  width: 100% !important;
+  max-width: 500px !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+[class*="LoginFrameContent_row"] { height: auto !important; margin: 0 !important; }
+[class*="LoginFrameContent_row"] > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex-basis: 100% !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+}
+
+/* ===== O card do formulário ===== */
+[class^="LoginCard_card"] {
+  width: 100% !important;
+  height: auto !important;
+  padding: 44px 40px 26px !important;
+  background: var(--hg-login-card) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 1px 0 var(--hg-hl) inset, 0 40px 90px -36px var(--hg-shadow), 0 10px 26px -14px var(--hg-shadow) !important;
+}
+[class^="LoginCard_card"] [class^="Title_title"] {
+  margin-bottom: 22px;
+  color: var(--hg-ink) !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+  height: auto !important;
+}
+
+/* campos */
+[class^="LoginCard_card"] [class*="LoginInput_container"] {
+  background: var(--hg-surface-soft) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  transition: border-color .15s, box-shadow .15s;
+}
+[class^="LoginCard_card"] [class*="LoginInput_container"]:hover { border-color: var(--hg-violet) !important; }
+[class^="LoginCard_card"] [class*="LoginInput_container"]:focus-within {
+  border-color: var(--hg-violet) !important;
+  box-shadow: 0 0 0 4px var(--hg-pill);
+}
+[class^="LoginCard_card"] [class*="LoginInput_label"] { color: var(--hg-muted) !important; }
+[class^="LoginCard_card"] [class*="LoginInput_mini_label"] { color: var(--hg-muted-2) !important; font-weight: 600; letter-spacing: .01em; }
+[class^="LoginCard_card"] input[class*="LoginInput_input"] {
+  background: transparent !important;
+  color: var(--hg-ink) !important;
+  caret-color: var(--hg-violet);
+  /* o campo desativado (e-mail) tem uma borda branca de 1px que só aparece no escuro.
+     NÃO zerar box-shadow aqui: o truque do autofill abaixo usa box-shadow. */
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+}
+[class^="LoginCard_card"] [class*="LoginInput_actions"] { background: transparent !important; }
+/* o preenchimento automático do Chrome pinta o campo de azul: usa a cor do tema */
+[class^="LoginCard_card"] input:-webkit-autofill,
+[class^="LoginCard_card"] input:-webkit-autofill:hover,
+[class^="LoginCard_card"] input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--hg-surface-soft) inset !important;
+  -webkit-text-fill-color: var(--hg-ink) !important;
+  caret-color: var(--hg-ink);
+  transition: background-color 99999s ease-out;
+}
+/* o ícone de mostrar/ocultar senha */
+[class^="LoginCard_card"] [class*="LoginInput_actions"] .btn-icon,
+[class^="LoginCard_card"] [class*="LoginInput_actions"] .btn-icon svg { color: var(--hg-muted) !important; fill: currentColor; }
+[class^="LoginCard_card"] [class*="LoginInput_actions"] .btn-icon:hover { color: var(--hg-violet-ink) !important; }
+
+/* botões */
+[class^="LoginCard_card"] [class*="Button_primary"][class*="Button_block"] {
+  height: 50px !important;
+  border: 0 !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)) !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: .01em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 16px 30px -14px rgba(109, 74, 255, .75) !important;
+  transition: filter .15s, box-shadow .15s;
+}
+[class^="LoginCard_card"] [class*="Button_primary"][class*="Button_block"]:hover:not([class*="Button_disabled"]) { filter: brightness(1.07); }
+[class^="LoginCard_card"] [class*="Button_primary"][class*="Button_block"][class*="Button_disabled"] {
+  background: var(--hg-line-strong) !important;
+  color: var(--hg-muted) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+[class^="LoginCard_card"] [class*="Button_ghost"] {
+  border-radius: 12px !important;
+  color: var(--hg-violet-ink) !important;
+  font-weight: 700 !important;
+  transition: background .15s;
+}
+[class^="LoginCard_card"] [class*="Button_ghost"]:hover { background: var(--hg-pill) !important; }
+
+/* "Entrar online" (vue-switcher) */
+[class^="LoginCard_card"] .vue-switcher { color: var(--hg-muted); font-weight: 600; }
+[class^="LoginCard_card"] .vue-switcher div { background: linear-gradient(135deg, var(--hg-primary), var(--hg-violet)) !important; }
+[class^="LoginCard_card"] .vue-switcher--unchecked div { background: var(--hg-track) !important; }
+[class^="LoginCard_card"] [class*="Login_col2"] { color: var(--hg-muted); }
+
+/* alertas (erro de senha etc.) */
+[class^="LoginCard_card"] [class*="Alert_alert"] { border-radius: 14px !important; }
+
+/* rodapé: termos e idioma */
+[class^="LoginCard_footer"] { border-top: 1px solid var(--hg-line); margin-top: 18px; padding-top: 16px; }
+[class^="LoginCard_footer"] a,
+[class^="LoginCard_footer"] button { color: var(--hg-muted) !important; font-weight: 600; transition: color .15s; }
+[class^="LoginCard_footer"] a:hover,
+[class^="LoginCard_footer"] button:hover { color: var(--hg-violet-ink) !important; }
+/* lista de idiomas (aberta) */
+[class*="LoginCard_localeVisible"] ul {
+  background: var(--hg-surface) !important;
+  border: 1px solid var(--hg-line-strong) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 48px -18px var(--hg-shadow), 0 6px 14px -8px var(--hg-shadow) !important;
+  overflow: hidden;
+}
+[class*="LoginCard_localeVisible"] li button { color: var(--hg-ink) !important; }
+[class*="LoginCard_localeVisible"] li button:hover { background: var(--hg-pill) !important; }
+
+/* ===== Interruptor de tema (login.js) ===== */
+.hg-login-tools { position: fixed; top: 22px; right: 28px; z-index: 20; }
+.hg-login-tools .hg-theme-switch {
+  width: 56px;
+  height: 30px;
+  margin: 0;
+  background: var(--hg-surface-alpha-2);
+  border: 1px solid var(--hg-line-strong);
+  box-shadow: 0 8px 18px -10px var(--hg-shadow);
+}
+.hg-login-tools .hg-theme-switch .hg-ts-ico { width: 14px; height: 14px; margin-top: -7px; color: var(--hg-muted); }
+.hg-login-tools .hg-theme-switch .hg-ts-sun { left: 7px; }
+.hg-login-tools .hg-theme-switch .hg-ts-moon { right: 7px; }
+.hg-login-tools .hg-theme-switch .hg-ts-thumb { top: 3px; left: 3px; width: 22px; height: 22px; background: #fff; box-shadow: 0 2px 6px rgba(27, 21, 52, .35); }
+.hg-login-tools .hg-theme-switch[aria-checked="true"] .hg-ts-thumb { transform: translateX(26px); }
+.hg-login-tools .hg-theme-switch[aria-checked="false"] .hg-ts-sun { color: #c98a00; }
+.hg-login-tools .hg-theme-switch[aria-checked="true"] .hg-ts-moon { color: #fff; }
+
+/* ===== Card de novidades (changelog) — sobre o painel escuro, sempre em tons claros ===== */
+.hg-changelog {
+  position: fixed;
+  left: 40px;
+  bottom: 40px;
+  z-index: 5;
+  width: min(460px, calc(52% - 104px));
+  max-height: 46vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .14), rgba(255, 255, 255, .06));
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 22px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 28px 60px -24px rgba(0, 0, 0, .65);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
+  overflow: hidden;
+}
+.hg-cl-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.hg-cl-ico {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  color: #fff;
+  background: linear-gradient(135deg, #d6249f, #6d4aff);
+  box-shadow: 0 8px 16px -8px rgba(214, 36, 159, .8);
+}
+.hg-cl-ico svg { width: 18px; height: 18px; }
+.hg-cl-headtext { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.hg-cl-headtext strong { font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
+.hg-cl-headtext small { margin-top: 1px; font-size: 12px; color: rgba(255, 255, 255, .7); }
+.hg-cl-badge {
+  flex: none;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: #fff;
+  background: linear-gradient(135deg, #d6249f, #6d4aff);
+}
+.hg-cl-chev { display: inline-flex; flex: none; width: 20px; height: 20px; color: rgba(255, 255, 255, .8); transition: transform .25s; }
+.hg-cl-chev svg { width: 100%; height: 100%; }
+.hg-changelog.is-folded .hg-cl-chev { transform: rotate(180deg); }
+.hg-cl-head:hover .hg-cl-chev { color: #fff; }
+
+.hg-cl-body {
+  padding: 2px 18px 16px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
+.hg-changelog.is-folded .hg-cl-body { display: none; }
+.hg-cl-entry { padding-top: 14px; }
+.hg-cl-entry-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.hg-cl-ver {
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, .18);
+}
+.hg-cl-title { font-size: 14px; font-weight: 700; }
+.hg-cl-date { margin-left: auto; font-size: 11.5px; color: rgba(255, 255, 255, .6); }
+.hg-cl-list { margin: 8px 0 0; padding: 0; list-style: none; }
+.hg-cl-list li {
+  position: relative;
+  padding: 3px 0 3px 18px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, .88);
+}
+.hg-cl-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff5fc4, #a992ff);
+}
+.hg-cl-older { margin-top: 12px; padding-top: 4px; border-top: 1px dashed rgba(255, 255, 255, .18); }
+.hg-cl-older summary { cursor: pointer; padding: 8px 0 0; font-size: 12.5px; font-weight: 700; color: rgba(255, 255, 255, .75); }
+.hg-cl-older summary:hover { color: #fff; }
+.hg-cl-older .hg-cl-entry:first-of-type { padding-top: 10px; }
+.hg-cl-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #cbbcff;
+  text-decoration: none;
+}
+.hg-cl-link:hover { color: #fff; }
+.hg-cl-ext { display: inline-flex; width: 14px; height: 14px; }
+.hg-cl-ext svg { width: 100%; height: 100%; }
+
+/* ===== Telas estreitas: sem painel esquerdo; formulário em tela cheia ===== */
+@media (max-width: 980px) {
+  aside[class*="LoginFrameContent_aside_"] { display: none !important; }
+  .hg-changelog { display: none; }
+  section[class*="LoginFrameContent_section"] { width: 100%; margin-left: 0; }
+  [class*="LoginFrameContent_logo"] { position: absolute !important; left: 24px !important; top: 24px !important; }
+  [class*="LoginFrameContent_logo"]::after { color: var(--hg-ink); }
+  [class^="LoginCard_card"] { padding: 36px 24px 22px !important; }
+}
